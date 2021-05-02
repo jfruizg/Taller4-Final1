@@ -1,0 +1,196 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: georgia, times, serif;
+    color: #333;
+    font-size: 1.0rem;
+    line-height: 2.0em;
+    margin: 0;
+
+}
+
+p {
+    margin-bottom: 1.6em;
+}
+
+.titulo {
+    line-height: 1.3em;
+    font-size: 2rem;
+    font-style: italic;
+}
+
+h1 {
+    line-height: 1.3em;
+    font-size: 2rem
+}
+
+.container {
+    width: 85%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+header {
+    background: rgb(219, 175, 145);
+    color: darkgray;
+    padding: 2rem 0;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.logo-navContanier {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    height: 80px;
+}
+
+.navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navigation ul li {
+    display: inline-block;
+}
+
+.navigation ul li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: all 0, 5s;
+    border-radius: 10px;
+}
+.tituloRegistro{
+    background: rgb(137, 137, 167);
+    align-items: center;
+    text-align: center;
+    margin-left: 800px;
+    margin-right: 800px;
+
+
+}
+.navigation ul li a:hover {
+    background: rgb(173, 133, 133);
+}
+
+.footer {
+    background: rgb(142, 143, 143);
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 15rem;
+}
+
+.main {
+    padding-top: 12rem;
+}
+
+.imagen1 {
+    margin-left: 250px;
+}
+
+.fomr-register .formularioRegistrar {
+    width: 400px;
+    background: rgb(222, 228, 140);
+    padding: 30px;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 4px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.fomr-register .boton_actualizar {
+    width: 100%;
+    background: cornflowerblue;
+    padding: 12px;
+    border: none;
+    color: cornsilk;
+    font-size: 16px;
+    margin: 16px 0px;
+}
+
+.fomr-register h4 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+.control {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.fomr-register .boton_registro .boton {
+    width: 100%;
+    background: cornflowerblue;
+    padding: 12px;
+    border: none;
+    color: cornsilk;
+    font-size: 16px;
+    margin: 16px 0px;
+}
+
+.boton {
+    width: 100%;
+}
+
+#botonSubmit {
+    padding: 10px;
+    color: white;
+    background-color: #009578;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+#botonSubmit:hover {
+    background-color: #00b28f;
+}
+
+#etiquetaBoton {
+    margin-left: 10px;
+    font-family: sans-serif;
+    color: #aaa;
+}
+
+@media only screen and (max-width: 767px) {
+    main {
+        align-content: center;
+        text-align: center;
+        margin-top: 150px;
+    }
+    .navigation {
+        width: 100%;
+    }
+    .navigation ul li {
+        display: block;
+    }
+    .navigation ul li a {
+        display: block;
+        padding: 0.5rem 1rem;
+        transition: all 0, 5s;
+        border-radius: 10px;
+    }
+    .navigation ul li a:hover {
+        background: rgb(173, 133, 133);
+    }
+}
