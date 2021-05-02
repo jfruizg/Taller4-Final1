@@ -1,69 +1,24 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
-
-    <link href="CSS/cssPag2.css" rel="stylesheet" />
-
-    <title>Pet-Citizens</title>
-    <meta charset="utf-8">
-    <meta name="Keywords" content="perros,mascotas,canino,felino">
-    <meta name="description" content="Per-ctizens un lugar donde va a poder regstrar a tu amigo de 4 patas  ">
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>File Upload Demo</title>
 </head>
 
 <body>
-<header class="header">
-    <div class="container logo-navContanier">
-        <nav class="navigation">
-            <ul>
+<div>Apache FileUpload</div>
+<form method="post" action="uploadFile" enctype="multipart/form-data">
+    Choose a file: <input type="file" name="uploadFile"/><input type="submit" value="Upload"/>
+</form>
 
-            </ul>
-        </nav>
-    </div>
-</header>
-<main class="Main">
+</br>
 
-    <Section class="fomr-register">
-
-        <div class="tituloRegistro">
-
-            <h4>Selecciona la imagena</h4>
-
-        </div>
-
-        <div class="contenedor_registrar"></div>
-        <div class="formularioRegistrar">
-            <div id="form">
-                <div>Cargar Imagen</div>
-                <form method="post" action="uploadFile" enctype="multipart/form-data">
-                    Choose a file:</br> <input type="file" accept="image/x-png,image/gif,image/jpeg" name="uploadFile"  class="Input"/><input type="submit" value="Upload"/>
-
-                </form>
-                <div class = "textoDescripcion">
-                    <input type="text" name="descripcion" class="control" id="Id" placeholder="Ingrese Descripcion" class ="campoTexto">
-                </div>
-
-                <p class="warning" id="warning"></p>
-            </div>
-        </div>
-        </div>
-
-    </Section>
-
-
-
-</main>
-
-<footer class="footer">
-    <div class="container">
-        <p>diesñada por juan felipe ruiz, Andres Nuñez, Jose Navas W, Jorge Andres Ramirez</p>
-    </div>
-</footer>
-
-
+<div>Servlet Multipart</div>
+<form method="post" action="multiPartServlet" enctype="multipart/form-data">
+    Choose a file: <input type="file" name="multiPartServlet"/><input type="submit" value="Upload"/>
+    <input type="text" name="descripcion" />
+</form>
 </body>
-
 </html>

@@ -5,7 +5,24 @@
     <title>Tabla</title>
 </head>
 <body>
+<script>
+    var imagen=1;
+    while(error==false)
+    {
+        var uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
+        var carpeta= obtener_imagen(uploadPath);
+        var img= new Image();
+        img.src=""+carpeta+"/"+imagen+".jpg";
+        img.onerror=error(imagen);
+        imagen++;
+    }
 
+    function error(numero)
+    {
+        error=yes;
+        total=numero
+    }
+</script>
 
 
 
