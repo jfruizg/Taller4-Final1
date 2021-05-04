@@ -13,6 +13,10 @@ import javax.servlet.http.Part;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 
 import static com.baeldung.Constants.UPLOAD_DIRECTORY;
 
@@ -47,7 +51,6 @@ public class MultipartServlet extends HttpServlet {
                 fileName = getFileName(part);
                 filDescripcion = request.getParameter("descripcion");
                 part.write(uploadPath + File.separator + fileName );
-
 
             }
 
