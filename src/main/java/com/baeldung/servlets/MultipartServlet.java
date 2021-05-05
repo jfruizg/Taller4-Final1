@@ -65,7 +65,6 @@ public class MultipartServlet extends HttpServlet {
                 Cookie[] monster = request.getCookies();
                 for(int i=0;i<monster.length;i++){
                     if(monster[i].getName().equals("userName")){
-                        System.out.println("paso");
                         operacion.agregarUsuario(monster[i].getValue(),date,descripcion,descrFoto,fileName,listaUsuario,file);
                     }
                 }

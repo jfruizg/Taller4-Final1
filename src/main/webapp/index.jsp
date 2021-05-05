@@ -47,6 +47,12 @@
                     <input type="text" name="userName" class="control" id="Id" placeholder="Ingrese Descripcion">
                 </div>
 
+                <div>Apache FileUpload</div>
+                <form method="post" action="uploadFile" enctype="multipart/form-data">
+                    Choose a file: <input type="file" name="uploadFile"/><input type="submit" value="Upload"/>
+                    <input type="text" name="textoDescripcion"/>
+                </form>
+
                 <p class="warning" id="warning"></p>
             </div>
         </form>
