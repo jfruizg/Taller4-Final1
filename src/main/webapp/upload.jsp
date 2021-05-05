@@ -9,10 +9,11 @@
 
 <body>
 
-<div>Subir imagen</div>
-<form method="post" action="multiPartServlet" enctype="multipart/form-data">
-    Choose a file: <input type="file" name="multiPartServlets" accept=".png, .jpg"/><input type="submit" value="Upload"/>
-    <input type="text" name="descripcion" />
+<div>Apache FileUpload</div>
+<form method="post" action="uploadFile" enctype="multipart/form-data">
+    Choose a file: <input type="file" name="uploadFile"/><input type="submit" value="Upload"/>
+</form>
+
 </form>
 </body>
 </html>
