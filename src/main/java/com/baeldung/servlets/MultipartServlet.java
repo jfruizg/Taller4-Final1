@@ -2,6 +2,7 @@ package com.baeldung.servlets;
 
 import com.baeldung.Constants;
 import com.baeldung.bean.Usuario;
+import com.baeldung.persistencia.UsuarioDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -24,6 +25,8 @@ import static com.baeldung.Constants.UPLOAD_DIRECTORY;
 public class MultipartServlet extends HttpServlet {
 
     ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
+    UsuarioDAO us = new UsuarioDAO();
+    File file = new File("../Data/archivo.dat");
     private static final long serialVersionUID = 1L;
 
     private String getFileName(Part part) {
@@ -49,26 +52,25 @@ public class MultipartServlet extends HttpServlet {
                 fileName = getFileName(part);
                 filDescripcion = request.getParameter("descripcion");
                 part.write(uploadPath + File.separator + fileName );
-            }
 
+                Date date = new Date(System.currentTimeMillis());
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Cookie[] monster = request.getCookies();
+
+                for(int i = 0; i<monster.length; i++) {
+
+                    Usuario listaU = new Usuario(monster[i].getValue(), date, fileName);
+                    listaUsuarios.add(listaU);
+                }
+                us.escribirEnArchivoJuegos(listaUsuarios,file);
+
+                for(int i = 0; i<listaUsuarios.size(); i++){
+                    System.out.println(listaUsuarios.get(i));
+                }
+            }
         } catch (FileNotFoundException fne) {
             request.setAttribute("message", "There was an error: " + fne.getMessage());
         }
-
-        response.sendRedirect(request.getContextPath() + "/Tabla.html");
-
-    }
-
-    public void getServletInfo(Cookie c1) throws IOException, ServletException {
-        Date date = new Date(System.currentTimeMillis());
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String fileName = "";
-        HttpServletRequest request = null;
-        for (Part part : request.getParts()) {
-            fileName = getFileName(part);
-            Usuario lista = new Usuario(c1.getValue(), date, getFileName(part));
-            listaUsuarios.add(lista);
-        }
-
+        response.sendRedirect(request.getContextPath() + "/Tabla1.jsp");
     }
 }

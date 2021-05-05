@@ -15,8 +15,6 @@ import java.util.ArrayList;
 @WebServlet(name = "loginCookies", value = "/login")
 public class Login extends HttpServlet {
 
-    ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
-    MultipartServlet servletImagen = new MultipartServlet();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 

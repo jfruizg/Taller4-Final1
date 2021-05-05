@@ -1,11 +1,17 @@
 package com.baeldung.bean;
 
+import java.io.Serializable;
 import java.util.Date;
+import com.google.gson.annotations.Expose;
 
-public class Usuario {
-
+public class Usuario implements Serializable {
+    @Expose
     private String nombre;
+
+    @Expose
     private Date fecha;
+
+    @Expose
     private String imagen;
 
     public Usuario(String nombre, Date fecha,String imagen) {
@@ -36,5 +42,10 @@ public class Usuario {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public String toString() {
+        return "City{" + "nombre=" + nombre + ", fecha=" + fecha +
+                ", imagen=" + imagen + '}';
     }
 }
