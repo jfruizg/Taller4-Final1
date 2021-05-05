@@ -8,12 +8,6 @@
 </head>
 
 <body>
-<div>Apache FileUpload</div>
-<form method="post" action="uploadFile" enctype="multipart/form-data">
-    Choose a file: <input type="file" name="uploadFile"/><input type="submit" value="Upload"/>
-</form>
-
-</br>
 
 <div>Servlet Multipart</div>
 <form method="post" action="multiPartServlet" enctype="multipart/form-data">

@@ -1,47 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>Start Page</title>
     <meta charset="UTF-8">
-    <title>Tabla</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
-<style>
-    table, th, td{
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-</style>
 <body>
-<script>
-    var imagen=1;
-    while(error==false)
-    {
-        var uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
-        var carpeta= obtener_imagen(uploadPath);
-        var img= new Image();
-        img.src=""+carpeta+"/"+imagen+".jpg";
-        img.onerror=error(imagen);
-        imagen++;
-    }
 
-    function error(numero)
-    {
-        error=yes;
-        total=numero
-    }
+<button id="mybtn">Get cities</button>
+
+<div>
+    <ul id="output">
+
+    </ul>
+</div>
+
+<script>
+    $('#mybtn').click(function () {
+
+        $.getJSON('GetCities', function (data) {
+
+            $("ul#output > li").remove();
+
+            $.each(data, function (key, value) {
+                $("#output").append('<li>' + value['name'] + " " + value['population'] + '</li>');
+            });
+        });
+    });
 </script>
-<table id="table">
-    <th>
-       Foto
-    </th>
-    <th>
-        Descripción
-    </th>
-    <th>
-        Hora
-    </th>
-    <th>
-        Descargar
-    </th>
-</table>
 </body>
 </html>

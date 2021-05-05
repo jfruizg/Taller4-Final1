@@ -7,4 +7,5 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>  <!--aca se puede cambiar el archivo fuente en el que incia el programa -->
     </welcome-file-list>
+    <Context path="/JavaServleJqueryList"/>
 </web-app>

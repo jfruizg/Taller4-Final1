@@ -1,6 +1,6 @@
 package com.baeldung.persistencia;
 
-import com.baeldung.servlets.Usuario;
+import com.baeldung.bean.Usuario;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.baeldung.servlets;
+package com.baeldung.bean;
 
 import java.util.Date;
 
