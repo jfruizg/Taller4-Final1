@@ -8,7 +8,6 @@ import com.google.gson.GsonBuilder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +37,8 @@ public class GetUsuario extends HttpServlet {
                     .excludeFieldsWithoutExposeAnnotation()
                     .create();
 
-            out.print(gson.toJson(cities));
+           out.print(gson.toJson(cities));
+
         }
     }
 }

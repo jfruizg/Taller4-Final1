@@ -12,11 +12,16 @@ public class Usuario implements Serializable {
     private Date fecha;
 
     @Expose
+    private String descripcion;
+
+    @Expose
     private String imagen;
 
-    public Usuario(String nombre, Date fecha,String imagen) {
+
+    public Usuario(String nombre, Date fecha, String descripcion, String imagen) {
         this.nombre = nombre;
         this.fecha = fecha;
+        this.descripcion = descripcion;
         this.imagen = imagen;
     }
 
@@ -44,8 +49,16 @@ public class Usuario implements Serializable {
         this.fecha = fecha;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public String toString() {
-        return "City{" + "nombre=" + nombre + ", fecha=" + fecha +
+        return "Usuario{" + "nombre=" + nombre + ", fecha=" + fecha +", Descripcion"+descripcion+
                 ", imagen=" + imagen + '}';
     }
 }

@@ -1,22 +1,18 @@
 package com.baeldung.servlets;
 
-import com.baeldung.Constants;
-import com.baeldung.bean.Usuario;
-import com.baeldung.persistencia.UsuarioDAO;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import static com.baeldung.Constants.UPLOAD_DIRECTORY;
-
+import java.util.List;
 @WebServlet(
         name = "MultiPartServlet",
         urlPatterns = {"/multiPartServlet"}
@@ -24,53 +20,39 @@ import static com.baeldung.Constants.UPLOAD_DIRECTORY;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class MultipartServlet extends HttpServlet {
 
-    ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
-    UsuarioDAO us = new UsuarioDAO();
-    File file = new File("../Data/archivo.dat");
-    private static final long serialVersionUID = 1L;
-
-    private String getFileName(Part part) {
-        for (String content : part.getHeader("content-disposition").split(";")) {
-            if (content.trim().startsWith("filename"))
-                return content.substring(content.indexOf("=") + 2, content.length() - 1);
-        }
-        return Constants.DEFAULT_FILENAME;
-    }
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists())
-            uploadDir.mkdir();
+        if (ServletFileUpload.isMultipartContent(request)) {
 
-        try {
-            String fileName = "";
-            String filDescripcion = "";
-            for (Part part : request.getParts()) {
-                fileName = getFileName(part);
-                filDescripcion = request.getParameter("descripcion");
-                part.write(uploadPath + File.separator + fileName );
+            DiskFileItemFactory factory = new DiskFileItemFactory();
+            factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
 
-                Date date = new Date(System.currentTimeMillis());
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                Cookie[] monster = request.getCookies();
-
-                for(int i = 0; i<monster.length; i++) {
-
-                    Usuario listaU = new Usuario(monster[i].getValue(), date, fileName);
-                    listaUsuarios.add(listaU);
-                }
-                us.escribirEnArchivoJuegos(listaUsuarios,file);
-
-                for(int i = 0; i<listaUsuarios.size(); i++){
-                    System.out.println(listaUsuarios.get(i));
-                }
+            ServletFileUpload upload = new ServletFileUpload(factory);
+            String uploadPath = getServletContext().getRealPath("./") + File.separator + "upload";
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
             }
-        } catch (FileNotFoundException fne) {
-            request.setAttribute("message", "There was an error: " + fne.getMessage());
+
+            try {
+                List<FileItem> formItems = upload.parseRequest(request);
+
+                if (formItems != null && formItems.size() > 0) {
+                    for (FileItem item : formItems) {
+                        if (!item.isFormField()) {
+                            String fileName = new File(item.getName()).getName();
+                            String filePath = uploadPath + File.separator + fileName;
+                            File storeFile = new File(filePath);
+                            item.write(storeFile);
+                            request.setAttribute("message", "File " + fileName + " has uploaded successfully!");
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                request.setAttribute("message", "There was an error: " + ex.getMessage());
+            }
+            getServletContext().getRequestDispatcher("/Tabla1.jsp").forward(request, response);
         }
-        response.sendRedirect(request.getContextPath() + "/Tabla1.jsp");
     }
 }

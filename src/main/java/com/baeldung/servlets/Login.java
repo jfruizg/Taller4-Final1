@@ -15,24 +15,18 @@ import java.util.ArrayList;
 @WebServlet(name = "loginCookies", value = "/login")
 public class Login extends HttpServlet {
 
+    private String name = "";
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         response.setContentType("text/html");
 
-        String name = request.getParameter("userName");
+        name = request.getParameter("userName");
 
 
         try {
 
-            Cookie[] monster = request.getCookies();
-            for(int i=0;i<monster.length;i++){
-                if(monster[i].getName().equals(name)){
-                    System.out.println("Welcome back: "+monster[i].getValue());
-                    response.sendRedirect(request.getContextPath() + "/upload.jsp");
-                }else{
                     PrintWriter out = response.getWriter();
-
 
                     Cookie c1 = new Cookie("userName", name);
 
@@ -41,13 +35,18 @@ public class Login extends HttpServlet {
 
                     response.sendRedirect(request.getContextPath() + "/upload.jsp"); // se agrego un enlcae que se dirije a otros servlet
                     out.close();
-                }
-            }
-
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

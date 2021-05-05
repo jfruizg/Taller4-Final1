@@ -9,7 +9,7 @@
 
 <body>
 
-<div>Servlet Multipart</div>
+<div>Subir imagen</div>
 <form method="post" action="multiPartServlet" enctype="multipart/form-data">
     Choose a file: <input type="file" name="multiPartServlets" accept=".png, .jpg"/><input type="submit" value="Upload"/>
     <input type="text" name="descripcion" />

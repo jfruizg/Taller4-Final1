@@ -4,12 +4,15 @@ import com.baeldung.bean.Usuario;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class UsuarioDAO {
 
 
     private ObjectInputStream entrada;
     private ObjectOutputStream salida;
+
+
 
     public UsuarioDAO(File archivo) {
 
@@ -25,8 +28,8 @@ public class UsuarioDAO {
     }
 
     public UsuarioDAO() {
-    }
 
+    }
 
     public ArrayList<Usuario> leerArchivoJuegos(File archivo) {
         ArrayList<Usuario> juegos = new ArrayList<Usuario>();
@@ -50,6 +53,11 @@ public class UsuarioDAO {
 
     public void escribirEnArchivoJuegos(ArrayList<Usuario> juegos, File archivo) {
         try {
+
+            for(int i = 0; i<juegos.size();i++){
+                System.out.println(juegos.get(i));
+            }
+            System.out.println(archivo.getAbsolutePath());
             salida = new ObjectOutputStream(new FileOutputStream(archivo));
             salida.writeObject(juegos);
             salida.close();
@@ -62,6 +70,16 @@ public class UsuarioDAO {
         }
     }
 
-
+    public boolean agregarUsuario(String nombre, Date fecha,String descripcion ,String imagen, ArrayList <Usuario>listaUsuarios, File file){
+        System.out.println("paso1");
+        Usuario nuevoUsuario = new Usuario(nombre, fecha,descripcion,imagen);
+        boolean proceso= false;
+        if(nombre!=null){
+            proceso= true;
+            listaUsuarios.add(nuevoUsuario);
+            escribirEnArchivoJuegos(listaUsuarios,file);
+        }
+        return proceso;
+    }
 
 }
