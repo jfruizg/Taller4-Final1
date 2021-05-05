@@ -14,15 +14,18 @@ public class Usuario implements Serializable {
     @Expose
     private String descripcion;
 
+    private String descripcionImagem;
+
     @Expose
     private String imagen;
 
 
-    public Usuario(String nombre, Date fecha, String descripcion, String imagen) {
+    public Usuario(String nombre, Date fecha, String descripcion, String imagen, String descripcionImagem) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.imagen = imagen;
+        this.descripcionImagem = descripcionImagem;
     }
 
     public String getImagen() {
@@ -49,6 +52,14 @@ public class Usuario implements Serializable {
         this.fecha = fecha;
     }
 
+    public String getDescripcionImagem() {
+        return descripcionImagem;
+    }
+
+    public void setDescripcionImagem(String descripcionImagem) {
+        this.descripcionImagem = descripcionImagem;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
@@ -58,7 +69,7 @@ public class Usuario implements Serializable {
     }
 
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", fecha=" + fecha +", Descripcion"+descripcion+
-                ", imagen=" + imagen + '}';
+        return "Usuario[" + "nombre=" + nombre + "| fecha=" + fecha +"| Descripcion"+descripcion+
+                "| MetaData"+descripcionImagem +"| imagen=" + imagen + ']';
     }
 }

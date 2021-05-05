@@ -70,9 +70,9 @@ public class UsuarioDAO {
         }
     }
 
-    public boolean agregarUsuario(String nombre, Date fecha,String descripcion ,String imagen, ArrayList <Usuario>listaUsuarios, File file){
+    public boolean agregarUsuario(String nombre, Date fecha,String descripcion,String metaData ,String imagen, ArrayList <Usuario>listaUsuarios, File file){
         System.out.println("paso1");
-        Usuario nuevoUsuario = new Usuario(nombre, fecha,descripcion,imagen);
+        Usuario nuevoUsuario = new Usuario(nombre, fecha,descripcion,metaData,imagen);
         boolean proceso= false;
         if(nombre!=null){
             proceso= true;

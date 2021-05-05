@@ -31,15 +31,15 @@
     </tbody>
 </table>
 
-<h3>Authors</h3>
+<h3>Tabla</h3>
 
 <table id="authorsTbl">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th># Books</th>
-        <th>Actions</th>
+        <th>nombre</th>
+        <th>fecha</th>
+        <th>descripcion</th>
+        <th>Imagen</th>
     </tr>
     </thead>
     <tbody>
