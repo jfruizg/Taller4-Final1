@@ -21,7 +21,7 @@ import java.util.List;
 public class GetUsuario extends HttpServlet {
 
     UsuarioDAO us = new UsuarioDAO();
-    File file = new File("/Data/archivo.dat");
+    File file = new File("archivo.dat");
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

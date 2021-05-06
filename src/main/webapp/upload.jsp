@@ -6,7 +6,7 @@
 
     <link href="CSS/cssPag1.css" rel="stylesheet"/>
 
-    <title>Pet-Citizens</title>
+    <title>Upload</title>
     <meta charset="utf-8">
     <meta name="Keywords" content="perros,mascotas,canino,felino">
     <meta name="description" content="Per-ctizens un lugar donde va a poder regstrar a tu amigo de 4 patas  ">
@@ -39,8 +39,10 @@
         <form class="formularioRegistrar" method="post" action="uploadFile" enctype="multipart/form-data">
 
             <div>Apache FileUpload</div>
-            Choose a file: <input type="file" name="uploadFile"/><input type="submit" value="Upload"/>
-            <input type="text" name="textoDescripcion"/>
+            Choose a file: <input type="file" name="uploadFile"  accept="image/jpeg, image/png"/><input type="submit" value="Upload"/>
+
+            <div> <input type="text" name="textoDescripcion"/></div>
+
 
             <p class="warning" id="warning"></p>
         </form>

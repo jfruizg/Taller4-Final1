@@ -43,6 +43,8 @@ public class MultipartServlet extends HttpServlet {
 
             ServletFileUpload upload = new ServletFileUpload(factory);
             String uploadPath = getServletContext().getRealPath("./") + File.separator + "upload";
+
+
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
                 uploadDir.mkdir();
@@ -55,7 +57,7 @@ public class MultipartServlet extends HttpServlet {
                 String filePath = uploadPath + File.separator + fileName;
                 File storeFile = new File(filePath);
                 formItems.get(0).write(storeFile);
-                String descrFoto= formItems.get(1).getName();
+                String descrFoto= (formItems.get(1).getSize())+"";
                 String descripcion = request.getParameter("textoDescripcion");
                 System.out.println(descripcion);
 
@@ -65,7 +67,8 @@ public class MultipartServlet extends HttpServlet {
                 Cookie[] monster = request.getCookies();
                 for(int i=0;i<monster.length;i++){
                     if(monster[i].getName().equals("userName")){
-                        operacion.agregarUsuario(monster[i].getValue(),date,descripcion,descrFoto,fileName,listaUsuario,file);
+                        uploadPath = uploadPath.replace("//" , "/");
+                        operacion.agregarUsuario(monster[i].getValue(),date,descrFoto,filePath,storeFile,listaUsuario,file);
                     }
                 }
 

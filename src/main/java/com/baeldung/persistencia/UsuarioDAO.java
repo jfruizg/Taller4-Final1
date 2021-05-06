@@ -13,7 +13,6 @@ public class UsuarioDAO {
     private ObjectOutputStream salida;
 
 
-
     public UsuarioDAO(File archivo) {
 
         if (archivo.exists()) {
@@ -53,11 +52,6 @@ public class UsuarioDAO {
 
     public void escribirEnArchivoJuegos(ArrayList<Usuario> juegos, File archivo) {
         try {
-
-            for(int i = 0; i<juegos.size();i++){
-                System.out.println(juegos.get(i));
-            }
-            System.out.println(archivo.getAbsolutePath());
             salida = new ObjectOutputStream(new FileOutputStream(archivo));
             salida.writeObject(juegos);
             salida.close();
@@ -70,16 +64,17 @@ public class UsuarioDAO {
         }
     }
 
-    public boolean agregarUsuario(String nombre, Date fecha,String descripcion,String metaData ,String imagen, ArrayList <Usuario>listaUsuarios, File file){
-        System.out.println("paso1");
-        Usuario nuevoUsuario = new Usuario(nombre, fecha,descripcion,metaData,imagen);
-        boolean proceso= false;
-        if(nombre!=null){
-            proceso= true;
+    public boolean agregarUsuario(String nombre, Date fecha, String descripcion, String imagen,File file2, ArrayList<Usuario> listaUsuarios, File file) {
+        Usuario nuevoUsuario = new Usuario(nombre, fecha, descripcion, imagen);
+        boolean proceso = false;
+        if (nombre != null) {
+            proceso = true;
             listaUsuarios.add(nuevoUsuario);
-            escribirEnArchivoJuegos(listaUsuarios,file);
+            escribirEnArchivoJuegos(listaUsuarios, file);
         }
         return proceso;
     }
+
+
 
 }

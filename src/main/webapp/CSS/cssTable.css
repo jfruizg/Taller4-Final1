@@ -1,0 +1,22 @@
+#authorsTbl{
+
+
+    margin-left: 300px;
+    background-color: #e9c8b5;
+
+
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: georgia, times, serif;
+    color: #333;
+    font-size: 1.0rem;
+    line-height: 2.0em;
+    margin: 0;
+
+}
+
+
