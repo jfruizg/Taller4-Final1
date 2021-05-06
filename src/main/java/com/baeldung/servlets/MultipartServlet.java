@@ -37,7 +37,6 @@ public class MultipartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (ServletFileUpload.isMultipartContent(request)) {
-            String descripcion = request.getParameter("userName");
             DiskFileItemFactory factory = new DiskFileItemFactory();
             factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
 
@@ -59,7 +58,6 @@ public class MultipartServlet extends HttpServlet {
                 System.out.println(filePath);
                 formItems.get(0).write(storeFile);
                 String descrFoto= (formItems.get(1).getSize())+"";
-                System.out.println(descripcion);
 
                 Date date = new Date(System.currentTimeMillis());
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

@@ -63,7 +63,7 @@
     }
     // Printing authors
 
-    printTable(elementId = 'authorsTbl', servlet = 'GetCities', columns = ['nombre', 'fecha', 'descripcion', 'imagines' ],actions = ['create-book']);
+    printTable(elementId = 'authorsTbl', servlet = 'GetCities', columns = ['nombre', 'fecha', 'descripcion', 'imagen' ],actions = ['create-book']);
 </script>
 
 </body>
