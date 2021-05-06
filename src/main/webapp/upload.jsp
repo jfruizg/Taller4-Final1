@@ -40,8 +40,8 @@
 
             <div>Apache FileUpload</div>
             Choose a file: <input type="file" name="uploadFile"  accept="image/jpeg, image/png"/><input type="submit" value="Upload"/>
+            <input type="text" name="userName" class="control" id="Id" placeholder="Ingrese Descripcion">
 
-            <div> <input type="text" name="textoDescripcion"/></div>
 
 
             <p class="warning" id="warning"></p>

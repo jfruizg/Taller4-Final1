@@ -12,7 +12,9 @@
     </style>
 </head>
 <body>
-
+<ul>
+    <li><a href="Tabla.html">Inge truco</a></li>
+</ul>
 <table id="authorsTbl">
     <thead>
     <tr>
@@ -20,6 +22,7 @@
         <th>fecha</th>
         <th>descripcion</th>
         <th>Imagen</th>
+
     </tr>
     </thead>
     <tbody>
@@ -34,6 +37,7 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
                 var data = JSON.parse(xhr.responseText);
+                console.log(data);
                 var tbodyRef = document.getElementById(elementId).getElementsByTagName('tbody')[0];
                 data.map(d => {
                     var newRow = tbodyRef.insertRow();
@@ -42,6 +46,7 @@
                         var text = document.createTextNode(d[c]);
                         cell.appendChild(text);
                     });
+
                     if (actions.includes('create-book')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
@@ -58,7 +63,7 @@
     }
     // Printing authors
 
-    printTable(elementId = 'authorsTbl', servlet = 'GetCities', columns = ['nombre', 'fecha', 'descripcion', "imagen"],actions = ['create-book']);
+    printTable(elementId = 'authorsTbl', servlet = 'GetCities', columns = ['nombre', 'fecha', 'descripcion', 'imagines' ],actions = ['create-book']);
 </script>
 
 </body>

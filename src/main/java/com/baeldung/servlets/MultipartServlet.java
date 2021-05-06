@@ -37,7 +37,7 @@ public class MultipartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (ServletFileUpload.isMultipartContent(request)) {
-
+            String descripcion = request.getParameter("userName");
             DiskFileItemFactory factory = new DiskFileItemFactory();
             factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
 
@@ -56,9 +56,9 @@ public class MultipartServlet extends HttpServlet {
                 String fileName = new File(formItems.get(0).getName()).getName();
                 String filePath = uploadPath + File.separator + fileName;
                 File storeFile = new File(filePath);
+                System.out.println(filePath);
                 formItems.get(0).write(storeFile);
                 String descrFoto= (formItems.get(1).getSize())+"";
-                String descripcion = request.getParameter("textoDescripcion");
                 System.out.println(descripcion);
 
                 Date date = new Date(System.currentTimeMillis());
@@ -68,7 +68,7 @@ public class MultipartServlet extends HttpServlet {
                 for(int i=0;i<monster.length;i++){
                     if(monster[i].getName().equals("userName")){
                         uploadPath = uploadPath.replace("//" , "/");
-                        operacion.agregarUsuario(monster[i].getValue(),date,descrFoto,filePath,storeFile,listaUsuario,file);
+                        operacion.agregarUsuario(monster[i].getValue(),date,descrFoto,filePath,listaUsuario,file);
                     }
                 }
 

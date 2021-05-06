@@ -64,7 +64,7 @@ public class UsuarioDAO {
         }
     }
 
-    public boolean agregarUsuario(String nombre, Date fecha, String descripcion, String imagen,File file2, ArrayList<Usuario> listaUsuarios, File file) {
+    public boolean agregarUsuario(String nombre, Date fecha, String descripcion, String imagen, ArrayList<Usuario> listaUsuarios, File file) {
         Usuario nuevoUsuario = new Usuario(nombre, fecha, descripcion, imagen);
         boolean proceso = false;
         if (nombre != null) {
